@@ -28,9 +28,11 @@
 
 <!-- Hero Section -->
 <section id="hero">
-    <div class="hero-overlay">
-      <h2>KVOCHUR LLC</h2>
+    <div class="hero-content">
+      <h2>KVORCHUR LLC</h2>
+      <p>Precision. Experience. Aviation Excellence.</p>
     </div>
+    <img src="images/Boeing737NoBackground.png" alt="Plane" class="hero-plane">
 </section>
 
 <!-- About Me -->
@@ -120,6 +122,19 @@
     }
 
     setInterval(moveCarousel, 3000);
+
+    window.addEventListener("scroll", () => {
+    const hero = document.getElementById("hero");
+    const plane = document.querySelector(".hero-plane");
+    
+    const heroBottom = hero.getBoundingClientRect().bottom;
+
+    if (heroBottom < window.innerHeight * 0.8) {
+        plane.classList.add("scrolled");
+    } else {
+        plane.classList.remove("scrolled");
+    }
+    });
 </script>  
 </body>  
 </html>
