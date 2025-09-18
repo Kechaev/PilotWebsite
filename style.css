@@ -72,14 +72,31 @@ body {
     object-fit: contain; 
     display: block;
   }
+
+  /* ====== Other Sections ====== */
+  #about {
+    max-width: 1000px;
+  }
+
+  #skills {
+    max-width: 1000px;
+  }
+
+  #gallery {
+    max-width: 1000px;
+  }
+
+  #contact {
+    max-width: 1000px;
+  }
   
   /* ====== Hero Section ====== */
   #hero {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: url("images/BackgroundNoBoeing737.png") no-repeat center center/cover;
-    background-size: 100% auto;
+    background: url("images/BackgroundNoBoeing737.png") no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -90,13 +107,14 @@ body {
   .hero-content {
     position: relative;
     z-index: 1; 
-    max-width: 40%;
+    max-width: 100%;
   }
   
   .hero-content h2 {
     font-size: 3.5rem;
     color: white;
     letter-spacing: 2px;
+    max-width: 100px;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
   }
   
@@ -141,13 +159,14 @@ body {
   /* ====== Sections ====== */
   section {
     padding: 4rem 2rem;
-    max-width: 1000px;
+    max-width: 100%;
     margin: auto;
   }
 
   /* ====== Carousel ====== */
   #carousel {
     display: flex;
+    max-width: 1000px;
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
