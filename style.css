@@ -9,7 +9,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f7fa; 
+    background-color: white; 
     color: #333;
     line-height: 1.6;
   }
@@ -120,7 +120,7 @@ body {
   
   .hero-content p {
     font-size: 1.4rem;
-    color: #e0e0e0;
+    color: white;
     margin-top: 1rem;
     text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
   }
@@ -129,6 +129,7 @@ body {
     position: absolute;
     right: 0; 
     bottom: 0;
+    top: 100px;
     height: 100%; 
     z-index: 2;
     pointer-events: none;
@@ -170,7 +171,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
-    background: #f9f9f9;
+    background: white;
   }
   
   .carousel-container {
@@ -189,7 +190,7 @@ body {
   }
   
   .carousel-track img {
-    width: calc((var(--carousel-max-width) - (var(--carousel-gap) * 2)) / 3);
+    width: calc((100% - (var(--carousel-gap) * 2)) / 3);
     flex-shrink: 0;
     aspect-ratio: 1 / 1;   
     object-fit: cover;
