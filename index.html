@@ -51,15 +51,18 @@
     </ul>
 </section>
 
-<!-- Gallery -->
-<section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-    <img src="images/PlaneWing.jpg" alt="Wing view">
-    <img src="images/PlaneWindow.jpg" alt="Window view">
-    <img src="images/PlaneCockpit.jpg" alt="Cockpit view">
+<!-- Carousel -->
+<section id="carousel">
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <img src="images/PlaneWing.jpg" alt="Wing View">
+        <img src="images/PlaneWindow.jpg" alt="Window View">
+        <img src="images/PlaneCockpit.jpg" alt="Cockpit View">
+        <img src="images/PlaneSilhouette.jpg" alt="Plane Silhouette">
+        <img src="images/PlaneNose.jpg" alt="Nose View">
+      </div>
     </div>
-</section>
+  </section>
 
 <!-- Contact -->
 <section id="contact">
@@ -87,5 +90,36 @@
 <footer>
     <p>&copy; 2025 KVOCHUR | All rights reserved</p>
 </footer>
+<script>
+    const track = document.querySelector('.carousel-track');
+    let slides = Array.from(track.children);
+
+    const gap = parseInt(getComputedStyle(track).gap) || 0;
+    const slideWidth = slides[0].getBoundingClientRect().width + gap;
+
+    for (let i = 0; i < 3; i++) {
+    const clone = slides[i].cloneNode(true);
+    track.appendChild(clone);
+    }
+
+    slides = Array.from(track.children); 
+    let index = 0;
+
+    function moveCarousel() {
+    index++;
+    track.style.transition = 'transform 0.6s ease-in-out';
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+
+    if (index >= slides.length - 3) {
+        setTimeout(() => {
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        index = 0;
+        }, 600); 
+    }
+    }
+
+    setInterval(moveCarousel, 3000);
+</script>  
 </body>  
 </html>
