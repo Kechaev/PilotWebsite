@@ -67,11 +67,11 @@
     <section id="carousel">
         <div class="carousel-container">
         <div class="carousel-track">
-            <img src="images/PlaneWing.jpg" alt="Wing View">
-            <img src="images/PlaneWindow.jpg" alt="Window View">
-            <img src="images/PlaneCockpit.jpg" alt="Cockpit View">
-            <img src="images/PlaneSilhouette.jpg" alt="Plane Silhouette">
-            <img src="images/PlaneNose.jpg" alt="Nose View">
+            <img src="images/PlaneWing.jpg" alt="Wing View" loading="lazy">
+            <img src="images/PlaneWindow.jpg" alt="Window View" loading="lazy">
+            <img src="images/PlaneCockpit.jpg" alt="Cockpit View" loading="lazy">
+            <img src="images/PlaneSilhouette.jpg" alt="Plane Silhouette" loading="lazy">
+            <img src="images/PlaneNose.jpg" alt="Nose View" loading="lazy">
         </div>
         </div>
     </section>
@@ -104,48 +104,81 @@
     <p>&copy; 2025 KVOCHUR | All rights reserved</p>
 </footer>
 <script>
-    const track = document.querySelector('.carousel-track');
-    let slides = Array.from(track.children);
+const track = document.querySelector('.carousel-track');
+let slides = Array.from(track.children);
 
-    const gap = parseInt(getComputedStyle(track).gap) || 0;
-    const slideWidth = slides[0].getBoundingClientRect().width + gap;
+function initCarousel() {
+  const gap = parseInt(getComputedStyle(track).gap) || 0;
+  const slideWidth = slides[0].getBoundingClientRect().width + gap;
 
+  if (window.innerWidth > 768) {
     for (let i = 0; i < 3; i++) {
-    const clone = slides[i].cloneNode(true);
-    track.appendChild(clone);
+      const clone = slides[i].cloneNode(true);
+      track.appendChild(clone);
     }
-
     slides = Array.from(track.children); 
     let index = 0;
 
     function moveCarousel() {
-    index++;
-    track.style.transition = 'transform 0.6s ease-in-out';
-    track.style.transform = `translateX(-${index * slideWidth}px)`;
+      index++;
+      track.style.transition = 'transform 0.6s ease-in-out';
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
 
-    if (index >= slides.length - 3) {
+      if (index >= slides.length - 3) {
         setTimeout(() => {
-        track.style.transition = 'none';
-        track.style.transform = 'translateX(0)';
-        index = 0;
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(0)';
+          index = 0;
         }, 600); 
-    }
+      }
     }
 
     setInterval(moveCarousel, 3000);
 
-    window.addEventListener("scroll", () => {
-    const hero = document.getElementById("hero");
-    const plane = document.querySelector(".hero-plane");
-    
-    const heroBottom = hero.getBoundingClientRect().bottom;
+  } else {
+    track.style.transform = "none";
+    track.style.transition = "none";
+  }
+}
 
-    if (heroBottom < window.innerHeight * 0.8) {
-        plane.classList.add("scrolled");
-    } else {
-        plane.classList.remove("scrolled");
+function initMobileCarousel() {
+  const clones = slides.map(slide => slide.cloneNode(true));
+  clones.forEach(clone => track.appendChild(clone));
+
+  track.addEventListener("scroll", () => {
+    const scrollLeft = track.scrollLeft;
+    const maxScrollLeft = track.scrollWidth / 2;
+
+    if (scrollLeft >= maxScrollLeft) {
+      track.scrollLeft = 0;
     }
-    });
+  });
+}
+
+
+window.addEventListener("load", initCarousel);
+window.addEventListener("resize", () => {
+  track.style.transform = "none";
+  track.style.transition = "none";
+  track.innerHTML = ""; 
+  track.append(...slides.slice(0, 5));
+  slides = Array.from(track.children);
+  initCarousel();
+});
+
+
+window.addEventListener("scroll", () => {
+const hero = document.getElementById("hero");
+const plane = document.querySelector(".hero-plane");
+
+const heroBottom = hero.getBoundingClientRect().bottom;
+
+if (heroBottom < window.innerHeight * 0.8) {
+    plane.classList.add("scrolled");
+} else {
+    plane.classList.remove("scrolled");
+}
+});
 </script>  
 </body>  
 </html>

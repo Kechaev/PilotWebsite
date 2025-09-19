@@ -284,6 +284,12 @@
 
 /* Mobile devices */
 @media (max-width: 768px) {
+  header {
+    position: static;  
+    width: 100%;
+    transition: none;  
+  }
+
   nav ul {
     flex-direction: column;
     gap: 1rem;
@@ -300,8 +306,12 @@
     padding: 1rem 0;
   }
 
+  #hero {
+    height: 60%;
+  }
+
   .hero-content {
-    max-width: 90%;
+    max-width: 100%;
     text-align: center;
     padding: 0 1rem;
   }
@@ -315,7 +325,10 @@
   }
 
   .hero-plane {
-    display: none; 
+    display: block;
+    width: 60%;  
+    bottom: 30%; 
+    right: 2%;    
   }
 
   .carousel-track img {
@@ -325,12 +338,35 @@
   section {
     padding: 2rem 1rem;
   }
+
+  .carousel-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: var(--carousel-gap);
+    transform: none !important; 
+    transition: none !important;
+  }
+
+  .carousel-track img {
+    width: 100%; 
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
 }
 
 /* Extra small devices */
 @media (max-width: 480px) {
   header h1 {
     font-size: 1.2rem;
+  }
+
+  .hero-plane {
+    display: none;
   }
 
   .cta {
