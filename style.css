@@ -312,7 +312,7 @@
 
   .hero-content {
     max-width: 100%;
-    text-align: center;
+    text-align: left;
     padding: 0 1rem;
   }
 
@@ -356,29 +356,5 @@
     width: 100%; 
     flex-shrink: 0;
     scroll-snap-align: center;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.2rem;
-  }
-
-  .hero-plane {
-    display: none;
-  }
-
-  .cta {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .hero-content h2 {
-    font-size: 1.6rem;
-  }
-
-  .hero-content p {
-    font-size: 0.9rem;
   }
 }
